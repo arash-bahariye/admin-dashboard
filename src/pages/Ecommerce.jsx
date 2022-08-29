@@ -39,7 +39,7 @@ const Ecommerce = () => {
         </div>
       </div>
       <div className='flex gap-10 flex-wrap justify-center'>
-          <div className='bg-white dark:text-gray-200 dark:bg-secondary-dark-bg m-2 p-4 rounded-2xl md:w-780'>
+          <div className='bg-white dark:text-gray-200 dark:bg-secondary-dark-bg m-2 p-4 rounded-2xl md:w-900'>
             <div className='flex justify-between'>
               <p className='font-semibold text-xl'>Revenue Updates</p>
               <div className='flex items-center gap-4'>
@@ -68,9 +68,20 @@ const Ecommerce = () => {
                   </p>
                   <p className='text-gray-600 mt-1'>Expense</p>
                 </div>
-                <div className='mt-5'>
-                  <SparkLine currentColor="blue" id="sparkline" type="Line" height="80px" width="260px" data={SparklineAreaData} color="blue"/>
+                <div className='mt-5 w-400 h-360'>
+                  <SparkLine currentColor="blue" id="sparkline" type="Line" height="250px" width="400px" data={SparklineAreaData} color="blue"/>
                 </div>
+                <div>
+                  <Button 
+                    color='white'
+                    bgColor='blue'
+                    text='Download Report'
+                    borderRadius='10px'
+                  />
+                </div>
+              </div>
+              <div>
+                <Stacked width='360px' height='500px'/>
               </div>
             </div>
           </div>
