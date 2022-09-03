@@ -26,7 +26,7 @@ const SparkLine = ({id,height,width,color,data,type,currentColor}) => {
       tooltip={tooltip}
       chartArea={{border:{width: 0}}}
       >
-      <Inject services={[ DataLabel, Tooltip, Legend, LineSeries, Category]}/>
+      <Inject services={[ColumnSeries, DataLabel, Tooltip, Legend, LineSeries, Category]}/>
       <SeriesCollectionDirective>
         <SeriesDirective dataSource={data} xName='month' yName='sales' name='Expenses' marker={marker}/>
       </SeriesCollectionDirective>
