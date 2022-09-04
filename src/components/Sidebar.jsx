@@ -22,7 +22,7 @@ const Sidebar = () => {
       {context.activeMenu && <>
         <div className='flex justify-between items-center'>
         <Link to='/' onClick={()=>context.setactiveMenu(prev=>!prev)} className='items-center gap-3 mt-4 flex text-xl font-extrabold tracking-tight dark:text-white text-slate-900'>
-          <SiShopware /> <span>Shoppy</span>
+          <SiShopware /> <span>Admin Dashbord</span>
         </Link>
         <TooltipComponent content='Menu' position='BottomCenter'>
           <button type="button" onClick={()=>context.setactiveMenu(false)} className="text-xl rounded-full p-3 hover:bg-light-gray mt-4 block md:hidden">
@@ -51,7 +51,6 @@ const Sidebar = () => {
             })}
             </div>
           )
-
         })}
       </div>
       </>}
