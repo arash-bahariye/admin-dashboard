@@ -4,7 +4,7 @@ import './App.css';
 import { FiSettings } from 'react-icons/fi';
 import { TooltipComponent } from '@syncfusion/ej2-react-popups';
 import {Navbar, Footer, Sidebar, ThemeSettings} from './components'
-import {Ecommerce, Orders ,Line, Calendar, Employees, Stacked, Pyramid, Customers, Kanban, Area, Bar, Pie, Financial, ColorPicker, ColorMapping, Editor} from './pages'
+import {Ecommerce, Orders ,Line, Calendar, Employees, Stacked, Pyramid, Customers, Kanban, Area, Bar, Pie, Financial, ColorMapping, Editor} from './pages'
 import StateContext from './context/ContextProvider';
 
 const App = () => {
@@ -34,6 +34,7 @@ const App = () => {
                     <div className='fixed md:static bg-main-bg dark:bg-main-dark-bg navbar w-full'>
                         <Navbar />
                     </div>
+                    <ThemeSettings />
                     <Routes>
                     {/* dashboard */}
                         <Route path='/' element={<Ecommerce/>} />
@@ -46,7 +47,6 @@ const App = () => {
                         <Route path='/kanban' element={<Kanban/>} />
                         <Route path='/editor' element={<Editor/>} />
                         <Route path='/calendar' element={<Calendar/>} />
-                        <Route path='/color-picker' element={<ColorPicker/>} />
                         {/* charts */}
                         <Route path='/line' element={<Line/>} />
                         <Route path='/area' element={<Area/>} />
