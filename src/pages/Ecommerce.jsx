@@ -3,8 +3,10 @@ import {BsCurrencyDollar} from 'react-icons/bs';
 import {GoPrimitiveDot} from 'react-icons/go';
 import {Stacked,Pie,Button,SparkLine} from '../components';
 import { earningData, SparklineAreaData, ecomPieChartData } from '../data/dummy';
-import {StateContext} from '../context/ContextProvider'
+import StateContext from '../context/ContextProvider';
+
 const Ecommerce = () => {
+  const cntx = useContext(StateContext)
   return (
     <div className='mt-12'>
       <div className='flex flex-wrap lg:flex-nowrap justify-center'>
@@ -16,7 +18,7 @@ const Ecommerce = () => {
             </div>
           </div>
           <div className='mt-6'>
-            <Button color="white" bgColor="blue" text="download" size="md" borderRadius="10px"/>
+            <Button color="white" bgColor={cntx.settings.color} text="download" size="md" borderRadius="10px"/>
           </div>
         </div>
         <div className='flex m-3 flex-wrap justify-center gap-1 items-center'>
@@ -74,7 +76,7 @@ const Ecommerce = () => {
                 <div>
                   <Button 
                     color='white'
-                    bgColor='blue'
+                    bgColor={cntx.settings.color}
                     text='Download Report'
                     borderRadius='10px'
                   />

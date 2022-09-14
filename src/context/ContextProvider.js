@@ -2,23 +2,40 @@ import React, {createContext, useState, useReducer} from 'react';
 
 const StateContext = createContext();
 
-const initialState = {
+const navbarInitialState = {
     chat: false,
     cart: false,
     userProfile: false,
     notification: false
 }
 
+const settingsInitialState = {
+    color:'#1A97F5',
+    darkMode:false,
+    selected:0
+}
+
 const navbarReducer = (navbarState, action) => {
     switch (action.type) {
         case 'chat':
-            return {...navbarState, chat:!navbarState.chat}
+            return {cart:false,userProfile:false,notification:false, chat:!navbarState.chat}
         case 'cart':
-            return {...navbarState, cart:!navbarState.cart}
+            return {chat:false,userProfile:false,notification:false, cart:!navbarState.cart}
         case 'userProfile':
-            return {...navbarState, userProfile:!navbarState.userProfile}
+            return {cart:false,chat:false,notification:false, userProfile:!navbarState.userProfile}
         case 'notification':
-            return {...navbarState, notification:!navbarState.notification}
+            return {cart:false,userProfile:false,chat:false, notification:!navbarState.notification}
+        default:
+            break;
+    }
+}
+
+const settingsReducer = (settings, action) => {
+    switch(action.type){
+        case 'setColor':
+            return {...settings, color:action.color,selected:action.selected}
+        case 'setDarkMode':
+            return {...settings, darkMode:!settings.darkMode}
         default:
             break;
     }
@@ -26,10 +43,12 @@ const navbarReducer = (navbarState, action) => {
 
 export const ContextProvider = (props) => {
     const [activeMenu, setactiveMenu] = useState(true);
+    const [activeSetting,setActiveSetting] = useState(false);
     const [screenSize, setscreenSize] = useState(undefined);
-    const [navbarState, navbarDispatch] = useReducer(navbarReducer, initialState)
+    const [navbarState, navbarDispatch] = useReducer(navbarReducer, navbarInitialState)
+    const [settings, settingsDispatch] = useReducer(settingsReducer, settingsInitialState);
     return(
-        <StateContext.Provider value={ {activeMenu,setactiveMenu,screenSize,setscreenSize,navbarState,navbarDispatch}}>
+        <StateContext.Provider value={ {activeMenu,setactiveMenu,activeSetting,setActiveSetting,screenSize,setscreenSize,navbarState,navbarDispatch,settings,settingsDispatch}}>
             {props.children}
         </StateContext.Provider>
     )

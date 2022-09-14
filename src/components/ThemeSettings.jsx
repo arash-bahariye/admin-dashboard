@@ -8,6 +8,7 @@ import { IoMdHeartEmpty } from 'react-icons/io';
 
 const ThemeSettings = () => {
   const cntx = useContext(StateContext);
+  
   return (
     <div className='bg-half-transparent w-screen fixed nav-item top-0 right-0'>
       <div className='float-right h-screen dark:text-gray-200 bg-white dark:bg-[#484B52] w-400'>
@@ -15,7 +16,7 @@ const ThemeSettings = () => {
           <p className='font-semibold text-xl'>Settings</p>
           <button
             type='button'
-            onClick={()=>{}}
+            onClick={()=>cntx.setActiveSetting(prev=>!prev)}
             style={{color:"gray",borderRadius:'50%'}}
             className='text-2xl p-3 hover:drop-shadow-xl hover:bg-light-gray'
           >
@@ -46,17 +47,18 @@ const ThemeSettings = () => {
         <div className='flex-col border-t-1 border-color p-4 ml-4'>
           <p>Theme Colors</p>
           <div className='flex gap-3'>
-            {themeColors.map((color,index)=>{
+            {themeColors.map((item,index)=>{
               return(
-                <TooltipComponent key={index} content={color.name} position='TopCenter'>
+                <TooltipComponent key={index} content={item.name} position='TopCenter'>
                   <div className='relative mt-2 cursor-pointer flex gap-5 items-center'>
                     <button
                       type='button'
                       className='h-10 w-10 rounded-full cursor-pointer'
-                      style={{backgroundColor: color.color}}
-                      onClick={()=>{}}
+                      style={{backgroundColor: item.color}}
+                      onClick={()=>cntx.settingsDispatch({type:"setColor",color:item.color,selected:index})}
                     >
-                      <BsCheck className={`ml-2 text-2xl text-white ${color.color === true ? "block" : "hidden"}`} />
+                    {console.log(cntx.settings)}
+                      <BsCheck className={`ml-2 text-2xl text-white ${index === cntx.settings.selected ? "block" : "hidden"}`} />
                     </button>
                   </div>
                 </TooltipComponent>

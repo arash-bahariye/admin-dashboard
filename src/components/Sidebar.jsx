@@ -8,7 +8,7 @@ import StateContext from '../context/ContextProvider';
 
 const Sidebar = () => {
   const context = useContext(StateContext)
-  const activeLink = "flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg text-white text-md m-2"
+  const activeLink = "flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg text-white text-md m-2 bg-gray-400"
   const normalLink = 'flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg text-gray-700 text-md dark:text-gray-200 dark:hover:text-black hover:bg-light-gray m-2'
   const handleSideBar = () => {
     if (context.screenSize < 900 && context.activeMenu) {

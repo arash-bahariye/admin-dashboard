@@ -8,19 +8,19 @@ import {Ecommerce, Orders ,Line, Calendar, Employees, Stacked, Pyramid, Customer
 import StateContext from './context/ContextProvider';
 
 const App = () => {
-    const {activeMenu} = useContext(StateContext)
+    const cntx = useContext(StateContext)
   return (
     <Fragment>
         <BrowserRouter>
             <div className='flex relative dark:bg-main-dark-bg'>
                 <div className='fixed right-4 bottom-4 z-50'>
                     <TooltipComponent content='settings' position='top'>
-                        <button type='button' className='text-3xl p-3 hover:drop-shadow-xl hover:bg-light-gray text-white rounded-full' style={{backgroundColor: "blue"}}>
+                        <button type='button' onClick={()=>cntx.setActiveSetting(true)} className='text-3xl p-3 hover:drop-shadow-xl hover:bg-light-gray text-white rounded-full' style={{backgroundColor: cntx.settings.color}}>
                             <FiSettings />
                         </button>
                     </TooltipComponent>
                 </div>
-                {activeMenu? 
+                {cntx.activeMenu? 
                 <div className='w-72 fixed sidebar dark:bg-secondary-dark-bg bg-white'>
                     <Sidebar />
                 </div> 
@@ -29,12 +29,12 @@ const App = () => {
                     <Sidebar />
                 </div>}
                 <div className={
-                    `dark:bg-main-bg bg-main-bg min-h-screen w-full ${activeMenu ? 'md:ml-72' : 'flex-2'}`
+                    `dark:bg-main-bg bg-main-bg min-h-screen w-full ${cntx.activeMenu ? 'md:ml-72' : 'flex-2'}`
                 }>
                     <div className='fixed md:static bg-main-bg dark:bg-main-dark-bg navbar w-full'>
                         <Navbar />
                     </div>
-                    <ThemeSettings />
+                    {cntx.activeSetting && <ThemeSettings />}
                     <Routes>
                     {/* dashboard */}
                         <Route path='/' element={<Ecommerce/>} />
